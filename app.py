@@ -46,6 +46,15 @@ def cadastrar_cliente():
     clientes.append(cliente)
     return jsonify({"message": "Cliente cadastrado com sucesso!"}), 201
 
+@app.route('/fornecedores', methods=['GET'])
+def listar_fornecores():
+    response = []
+    for fornecedor in fornecedores:
+            response.append({
+                "nome": fornecedor.nome
+            })
+    return jsonify(response)
+
 # Rota para listar produtos com informações adicionais
 @app.route('/produtos', methods=['GET'])
 def listar_produtos():
@@ -53,12 +62,21 @@ def listar_produtos():
     for fornecedor in fornecedores:
         for cliente in clientes:
             response.append({
-                "cliente_nome": cliente.nome,
-                "cliente_endereco": cliente.endereco,
                 "produto": fornecedor.produto,
                 "quantidade": fornecedor.quantidade,
                 "valor": fornecedor.valor
             })
+    return jsonify(response)
+
+# Nova rota para listar apenas os clientes
+@app.route('/clientes', methods=['GET'])
+def listar_clientes():
+    response = []
+    for cliente in clientes:
+        response.append({
+            "nome": cliente.nome,
+            "endereco": cliente.endereco
+        })
     return jsonify(response)
 
 if __name__ == '__main__':
