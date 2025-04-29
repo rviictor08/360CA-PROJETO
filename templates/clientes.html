@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Clientes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body class="index-page">
+
+    <!-- Botão para voltar -->
+    <a href="{{ url_for('index') }}" class="botao-topo-direito">Voltar para Principal</a>
+    <a href="{{ url_for('acompanhamentos') }}" class="botao-topo-esquerdo">Acompanhar</a>
+
+    <div class="container">
+        <h1>Cadastro de Clientes</h1>
+        <form action="/cliente" method="post">
+            <label for="cliente-nome">Nome do Cliente:</label><br>
+            <input type="text" id="cliente-nome" name="cliente-nome"><br><br>
+            
+
+            <label for="endereco">Endereço:</label><br>
+            <input type="text" id="endereco" name="endereco"><br><br>
+
+            <input type="submit" value="Cadastrar Cliente" class="btn">
+        </form>
+    </div>
+
+</body>
+</html>

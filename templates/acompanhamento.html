@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Acompanhamento de Produtos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/acompanhamento.css') }}">
+</head>
+<body class="index-page">
+
+    <!-- Botão para voltar -->
+    <a href="{{ url_for('index') }}" class="botao-topo-direito">Voltar para Principal</a>
+
+    <!-- Botão "Acompanhar" no canto superior esquerdo -->
+    <a href="{{ url_for('acompanhamentos') }}" class="botao-topo-esquerdo">Acompanhar</a>
+
+    <div class="container">
+        <h1>Acompanhamento de Produtos</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome do Produto</th>
+                    <th>Origem</th>
+                    <th>Destino</th>
+                    <th>Cliente Final</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Exemplo de produtos -->
+                <tr>
+                    <td>Produto A</td>
+                    <td>São Paulo</td>
+                    <td>Rio de Janeiro</td>
+                    <td>João Silva</td>
+                    <td>Em Transporte</td>
+                </tr>
+                <tr>
+                    <td>Produto B</td>
+                    <td>Curitiba</td>
+                    <td>Porto Alegre</td>
+                    <td>Maria Santos</td>
+                    <td>Entregue</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+</html>
