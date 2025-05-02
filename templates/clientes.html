@@ -14,12 +14,23 @@
     <div class="container">
         <h1>Cadastro de Clientes</h1>
         <form action="/cliente" method="post">
-            <label for="cliente-nome">Nome do Cliente:</label><br>
-            <input type="text" id="cliente-nome" name="cliente-nome"><br><br>
-            
+            <label for="cliente-nome">Fornecedor:</label><br>
+            <input type="text" id="cliente-nome"placeholder="Seu nome"  name="cliente-nome"><br><br>
+
+            <label for="endereco">Produto:</label><br>
+            <input type="text" id="endereco" placeholder="Digite seu produto" name="endereco"><br><br>
+
+            <label for="endereco">Quantidade:</label><br>
+            <input type="text" id="endereco" placeholder="Quantidade em estoque" name="endereco"><br><br>
 
             <label for="endereco">Endereço:</label><br>
-            <input type="text" id="endereco" name="endereco"><br><br>
+            <input type="text" id="endereco" placeholder="Digite seu endereco" name="endereco"><br><br>
+
+            <label>Valor e Quantidade por Valor:</label><br>
+            <div class="input-row">
+                <input type="text" id="valor" name="valor" placeholder="Valor">
+                <input type="text" id="quantidade-valor" name="quantidade-valor" placeholder="Qtd. por Valor">
+            </div><br>
 
             <input type="submit" value="Cadastrar Cliente" class="btn">
         </form>
