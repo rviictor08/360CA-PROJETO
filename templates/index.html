@@ -1,32 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Cadastro de Fornecedores</title>
+    <meta charset="UTF-8" />
+    <title>Cadastro de Clientes</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
 <body class="index-page">
 
-    <!-- Botão no canto superior direito e esquerdo -->
+    <!-- Botões no canto superior direito e esquerdo -->
     <a href="{{ url_for('login') }}" class="botao-topo-direito">Entrar como Fornecedor</a>
     <a href="{{ url_for('acompanhamentos') }}" class="botao-topo-esquerdo">Acompanhar</a>
 
     <div class="container">
-        <h1>Cadastro de Fornecedores</h1>
-        <!-- !-- PRECISA DE ROTA NO CASO N TEM BANCO VAI SO ATULIZAR FORM --! -->
-        <form action="/" method="get">
+        <h1>Cadastro de Clientes</h1>
+
+        {% if mensagem %}
+            <p>{{ mensagem }}</p>
+        {% endif %}
+
+        <!-- Formulário com método POST -->
+        <form action="/cadastrar_cliente" method="post">
             <label for="fornecedor-nome">Nome do Cliente:</label><br>
-            <input type="text" id="fornecedor-nome" placeholder="Digite seu nome" name="fornecedor-nome"><br><br>
+            <input type="text" id="fornecedor-nome" placeholder="Digite seu nome" name="fornecedor-nome" required><br><br>
 
             <label for="produto">Produto:</label><br>
-            <input type="text" id="produto" placeholder="Digite o produto" name="produto"><br><br>
+            <input type="text" id="produto" placeholder="Digite o produto" name="produto" required><br><br>
 
             <label for="quantidade">Quantidade:</label><br>
-            <input type="text" id="quantidade" placeholder="Digite a quantidade" name="quantidade"><br><br>
+            <input type="number" id="quantidade" placeholder="Digite a quantidade" name="quantidade" required><br><br>
+             
+            <label for="quantidade">Destino:</label><br>
+            <input type="text" id="destino" placeholder="Digite seu endereço" name="destino" required><br><br>
 
-            <input type="submit" value="Cadastrar Fornecedor" class="btn">
+            <input type="submit" value="Cadastrar Cliente" class="btn">
         </form>
     </div>
-
 </body>
 </html>

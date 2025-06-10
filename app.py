@@ -1,38 +1,46 @@
 from flask import Flask, render_template, request, redirect, session, url_for
+import psycopg2
 
 class App:
     def __init__(self):
         self.app = Flask(__name__)
-        self.app.secret_key = 'secreto'  # precisa disso para usar sessões
+        self.app.secret_key = 'secreto'
 
-        # Credenciais corretas
-        self.EMAIL_CORRETO = 'fornecedor@gmail.com'
-        self.SENHA_CORRETA = '2025'
+        # Conexão com o PostgreSQL
+        self.conexao = psycopg2.connect(
+            dbname="meuprojeto",
+            user="postgres",
+            password="raul",  # substitua com sua senha
+            host="localhost",
+            port="5432"
+        )
 
-        # Configurando as rotas
         self.configurar_rotas()
 
     def configurar_rotas(self):
-        # Página inicial com os botões CLIENTE e FORNECEDOR
         @self.app.route('/')
         def index():
             return render_template('inicio.html')
 
-        # Página de login do FORNECEDOR
         @self.app.route('/login', methods=['GET', 'POST'])
         def login():
             if request.method == 'POST':
                 email = request.form['email']
                 senha = request.form['senha']
-                if email == self.EMAIL_CORRETO and senha == self.SENHA_CORRETA:
+
+                cursor = self.conexao.cursor()
+                cursor.execute("SELECT * FROM fornecedores WHERE email = %s AND senha = %s", (email, senha))
+                fornecedor = cursor.fetchone()
+                cursor.close()
+
+                if fornecedor:
                     session['logado'] = True
                     return redirect(url_for('cliente'))
                 else:
-                    return "Você não tem acesso de Fornecedor! Tente novamente."
+                    return "Email ou senha incorretos!"
             return render_template('login.html')
 
-        # Página de cadastro de cliente (acessível após login)
-        @self.app.route('/cliente', methods=['GET', 'POST'])
+        @self.app.route('/fornecedor', methods=['GET', 'POST'])
         def cliente():
             if not session.get('logado'):
                 return redirect(url_for('login'))
@@ -40,21 +48,87 @@ class App:
             if request.method == 'POST':
                 nome = request.form['cliente-nome']
                 endereco = request.form['endereco']
-                # aqui você pode salvar os dados, se quiser
-                return redirect(url_for('cliente'))
-            return render_template('clientes.html')
 
-        # Página de acompanhamento
+                cursor = self.conexao.cursor()
+                cursor.execute("INSERT INTO clientes (nome, endereco) VALUES (%s, %s)", (nome, endereco))
+                self.conexao.commit()
+                cursor.close()
+
+                return redirect(url_for('cliente'))
+            return render_template('fornecedor.html')
+
+        @self.app.route('/cadastrar_fornecedor', methods=['POST'])
+        def cadastrar_fornecedor():
+            if not session.get('logado'):
+                return redirect(url_for('login'))
+
+            nome_fornecedor = request.form['nome_fornecedor']
+            produto_fornecedor = request.form['produto_fornecedor']
+            quantidade = request.form['quantidade']
+            endereco = request.form['endereco']
+            valor_por_item = request.form['valor_por_item']
+            quantidade_por_valor = request.form['quantidade_por_valor']
+
+            try:
+                cursor = self.conexao.cursor()
+                cursor.execute("""
+                    INSERT INTO produtos_fornecedores (
+                        nome_fornecedor,
+                        produto_fornecedor,
+                        quantidade,
+                        endereco,
+                        valor_por_item,
+                        quantidade_por_valor
+                    ) VALUES (%s, %s, %s, %s, %s, %s)
+                """, (
+                    nome_fornecedor,
+                    produto_fornecedor,
+                    quantidade,
+                    endereco,
+                    valor_por_item,
+                    quantidade_por_valor
+                ))
+                self.conexao.commit()
+                cursor.close()
+                mensagem = "Fornecedor cadastrado com sucesso!"
+            except Exception as e:
+                mensagem = f"Erro ao cadastrar fornecedor: {e}"
+
+            return render_template('fornecedor.html', mensagem=mensagem)
+
+        @self.app.route('/cadastrar_cliente', methods=['POST'])
+        def adicionar_cliente():
+            nome_cliente = request.form['fornecedor-nome']
+            produto = request.form['produto']
+            quantidade = request.form['quantidade']
+            destino = request.form['destino']
+
+            try:
+                cursor = self.conexao.cursor()
+                cursor.execute(
+                    "INSERT INTO produto_clientes (nome, produto, quantidade, origem, destino, status) VALUES (%s, %s, %s, %s, %s, %s)",
+                    (nome_cliente, produto, int(quantidade), 'Armazém Central', destino, 'Em transporte')
+                )
+                self.conexao.commit()
+                cursor.close()
+                mensagem = "Cliente cadastrado com sucesso!"
+            except Exception as e:
+                mensagem = f"Erro ao cadastrar o cliente: {e}"
+
+            return render_template('index.html', mensagem=mensagem)
+
         @self.app.route('/acompanhamentos')
         def acompanhamentos():
-            return render_template('acompanhamento.html')
+            cursor = self.conexao.cursor()
+            cursor.execute("SELECT produto, origem, destino, nome, status FROM produto_clientes")
+            pedidos = cursor.fetchall()
+            cursor.close()
+            return render_template('acompanhamento.html', pedidos=pedidos)
 
-        # Página aberta para CLIENTE (carrega index.html)
         @self.app.route('/cliente-index')
         def cliente_index():
             return render_template('index.html')
 
-        # Logout do FORNECEDOR
         @self.app.route('/logout')
         def logout():
             session.clear()

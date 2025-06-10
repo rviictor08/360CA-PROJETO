@@ -17,8 +17,15 @@ body {
     flex-direction: column;
 }
 
+/* Fundo especial apenas se a classe for usada */
+body.index-page {
+    background: url('https://media.licdn.com/dms/image/v2/D4D12AQGSGHAl97jvMQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1721174222022?e=2147483647&v=beta&t=HfbG8bxqnZsQVerw8PHicbOHkLaxfzLIIdBmkytOOWU') no-repeat center center fixed;
+    background-size: cover;
+}
+
 /* Botões no topo */
-.botao-topo-direito, .botao-topo-esquerdo {
+.botao-topo-direito,
+.botao-topo-esquerdo {
     position: absolute;
     top: 20px;
     background-color: #15a608;
@@ -40,18 +47,10 @@ body {
     left: 20px;
 }
 
-/* Tiramos o hover mudar de cor */
-
+/* Não muda de cor no hover */
 .botao-topo-direito:hover,
 .botao-topo-esquerdo:hover {
-    /* Mantém o mesmo verde sem mudar */
     background-color: #15a608;
-}
-
-/* Fundo especial apenas nessa página */
-body.index-page {
-    background: url('https://media.licdn.com/dms/image/v2/D4D12AQGSGHAl97jvMQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1721174222022?e=2147483647&v=beta&t=HfbG8bxqnZsQVerw8PHicbOHkLaxfzLIIdBmkytOOWU') no-repeat center center fixed;
-    background-size: cover;
 }
 
 /* Container principal */
@@ -66,7 +65,7 @@ body.index-page {
     overflow-x: auto;
 }
 
-/* Título principal */
+/* Título */
 h1 {
     text-align: center;
     color: #314f2b;
@@ -74,7 +73,6 @@ h1 {
     font-size: 32px;
 }
 
-/* Tabelas */
 /* Tabelas */
 table {
     width: 100%;
@@ -107,19 +105,21 @@ tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-/* REMOVI o hover nas linhas */
+/* Sem efeito de hover */
 /*
 tr:hover {
     background-color: #eef7ed;
 }
- */
+*/
 
 /* Responsivo */
 @media (max-width: 768px) {
     .container {
         padding: 20px;
     }
-    th, td {
+
+    th,
+    td {
         font-size: 14px;
         padding: 10px;
     }
