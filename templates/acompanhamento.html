@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Acompanhamento de Pedidos</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/acompanhamento.css') }}">
-     <script src="../static/js/acompanhamento.js"></script>
 </head>
 <body>
     <div class="container">
@@ -50,7 +49,7 @@
                     statusCell.innerText = statusOptions[(atual + 1) % statusOptions.length];
                 }
             });
-        }, 10000); // troca a cada 10 segundos
+        }, 5000); // troca a cada 10 segundos
     </script>
 </body>
 </html>
