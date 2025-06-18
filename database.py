@@ -1,6 +1,9 @@
 import psycopg2
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> fc82c94f1572f6d508de56458a0fb5ab2166698c
 class Database:
     def __init__(self):
         self.conexao = psycopg2.connect(
@@ -8,11 +11,16 @@ class Database:
             user="postgres",
             password="raul",
             host="localhost",
+<<<<<<< HEAD
             port="5432",
+=======
+            port="5432"
+>>>>>>> fc82c94f1572f6d508de56458a0fb5ab2166698c
         )
 
     def get_conexao(self):
         return self.conexao
+<<<<<<< HEAD
 
     # ///dados do meu banco
 
@@ -46,3 +54,5 @@ class Database:
 #     valor_por_item NUMERIC(10, 2),
 #     quantidade_por_valor NUMERIC(10, 2)
 # );
+=======
+>>>>>>> fc82c94f1572f6d508de56458a0fb5ab2166698c

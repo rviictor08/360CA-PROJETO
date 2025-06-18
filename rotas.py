@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 from flask import render_template, request, redirect, session, url_for, jsonify
+=======
+from flask import render_template, request, redirect, session, url_for
+>>>>>>> fc82c94f1572f6d508de56458a0fb5ab2166698c
 
 # Importação dos modelos (entidades) que encapsulam a lógica de banco
 from modelos.cliente import Cliente
