@@ -1,16 +1,6 @@
-<<<<<<< HEAD
-
 # Trabalho de Programação Orientada a Objetos
 
 CA360
-
-=======
-
-# Trabalho de Programação Orientada a Objetos
-
-CA360
-
-> > > > > > > fc82c94f1572f6d508de56458a0fb5ab2166698c
 
 ## Descrição
 
@@ -38,16 +28,9 @@ Link Layout Figma https://www.figma.com/design/MPho6u5aRL9yVwQBoqN5DI/ca_360_01?
 <img src="https://raw.githubusercontent.com/rviictor08/360CA-PROJETO/main/Layout/login.png" alt="login">
 <img src="https://raw.githubusercontent.com/rviictor08/360CA-PROJETO/main/Layout/acompanhamento.png" alt="acaompanhamento">
 
-> > > > > > > fc82c94f1572f6d508de56458a0fb5ab2166698c
-
 ## Instalação
 
 Para rodar o projeto, siga as etapas abaixo:
 
 1. Clone este repositório em sua máquina local:
-   ```bash
    git clone https://github.com/rviictor08/360CA-PROJETO
-   <<<<<<< HEAD
-   ```
-   =======
-   > > > > > > > fc82c94f1572f6d508de56458a0fb5ab2166698c
