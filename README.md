@@ -24,9 +24,9 @@ Este trabalho tem como objetivo aplicar os conceitos de Programação Orientada 
 
 Link Layout Figma https://www.figma.com/design/MPho6u5aRL9yVwQBoqN5DI/ca_360_01?node-id=1-890&t=7PpQqpTFcA1sOXM8-1
 
-<img src="https://raw.githubusercontent.com/rviictor08/360CA-PROJETO/main/Layout/Layout_complet/ca360_inicio.png" alt="inicio">
-<img src="https://raw.githubusercontent.com/rviictor08/360CA-PROJETO/main/Layout/Layout_complet/ca360_login.png" alt="login">
-<img src="https://raw.githubusercontent.com/rviictor08/360CA-PROJETO/main/Layout/Layout_complet/ca360_index.png" alt="clientes">
+<img src="https://raw.githubusercontent.com/rvictor08/360CA-PROJETO/main/Layout/Layout_complet/ca360_inicio.png" alt="inicio">
+<img src="https://raw.githubusercontent.com/rvictor08/360CA-PROJETO/main/Layout/Layout_complet/ca360_login.png" alt="login">
+<img src="https://raw.githubusercontent.com/rvictor08/360CA-PROJETO/main/Layout/Layout_complet/ca360_index.png" alt="clientes">
 
 ## Instalação
 
