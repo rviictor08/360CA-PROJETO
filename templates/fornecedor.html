@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <title>Cadastro de Fornecedor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+</head>
+<body class="index-page">
+
+    <!-- Botões para voltar e acompanhar -->
+    <a href="{{ url_for('index') }}" class="botao-topo-direito">Voltar para Principal</a>
+    <a href="{{ url_for('acompanhamentos') }}" class="botao-topo-esquerdo">Acompanhar</a>
+
+    <div class="container">
+        <h1>Cadastro de Fornecedor</h1>
+        
+        {% if mensagem %}
+            <p>{{ mensagem }}</p>
+        {% endif %}
+        <form action="/cadastrar_fornecedor" method="post">
+            <!-- Fornecedor -->
+            <label for="nome_fornecedor">Fornecedor:</label><br>
+            <input type="text" id="nome_fornecedor" placeholder="Seu nome" name="nome_fornecedor" required /><br><br>
+
+            <!-- Produto -->
+            <label for="produto_fornecedor">Produto:</label><br>
+            <input type="text" id="produto_fornecedor" placeholder="Digite seu produto" name="produto_fornecedor" required /><br><br>
+
+            <label for="origem">Origem:</label><br>
+            <input type="text" id="origem" placeholder="Origem do seu produto" name="origem" required /><br><br>
+
+            <!-- Quantidade -->
+            <label for="quantidade">Quantidade em estoque:</label><br>
+            <input type="number" id="quantidade" placeholder="Quantidade em estoque" name="quantidade" required /><br><br>
+
+            <!-- Endereço -->
+            <label for="endereco">Endereço:</label><br>
+            <input type="text" id="endereco" placeholder="Digite seu endereço" name="endereco" required /><br><br>
+
+            <!-- Valor por item e quantidade por valor -->
+            <label>Valor e Quantidade por Valor:</label><br>
+            <div class="input-row">
+                <input type="number" step="0.01" id="valor_por_item" placeholder="Valor" name="valor_por_item" required />
+                <input type="number" step="0.01" id="quantidade_por_valor" placeholder="Qtd. por Valor" name="quantidade_por_valor" required />
+            </div><br>
+
+            <input type="submit" value="Cadastrar Fornecedor" class="btn" />
+        </form>
+    </div>
+
+</body>
+</html>

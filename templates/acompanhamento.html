@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Acompanhamento de Pedidos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/acompanhamento.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Acompanhamento de Pedidos</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Origem</th>
+                    <th>Destino</th>
+                    <th>Cliente</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for produto, origem, destino, nome, status in pedidos %}
+                <tr>
+                    <td>{{ produto }}</td>
+                    <td>{{ origem }}</td>
+                    <td>{{ destino }}</td>
+                    <td>{{ nome }}</td>
+                    <td class="status">{{ status }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="5">Nenhum pedido encontrado.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const statusOptions = ["Em transporte", "Chegando", "Entregue"];
+        const linhas = document.querySelectorAll("tbody tr");
+
+        setInterval(() => {
+            linhas.forEach(linha => {
+                const statusCell = linha.querySelector(".status");
+                if (!statusCell) return;
+                const atual = statusOptions.indexOf(statusCell.innerText);
+                if (atual >= 0) {
+                    statusCell.innerText = statusOptions[(atual + 1) % statusOptions.length];
+                }
+            });
+        }, 5000); // troca a cada 10 segundos para voce ver como seria o codigo real da logica seria na produtos_cliente.py
+    </script>
+</body>
+</html>

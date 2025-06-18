@@ -1,0 +1,80 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo do body */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(120deg, #25b327, #1d3b1e);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container do login */
+.login-container {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
+}
+
+/* Título */
+h2 {
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* Formulário */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Estilo do grupo de input */
+.input-group {
+    position: relative;
+}
+
+/* Ícones dentro do input */
+.input-group i {
+    position: absolute;
+    top: 50%;
+    left: 14px;
+    transform: translateY(-50%);
+    color: #000000; /* ÍCONE PRETO */
+    font-size: 18px;
+}
+
+/* Estilo do input */
+.input-group input {
+    width: 100%;
+    padding: 12px 12px 12px 44px; /* espaço pro ícone */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+/* Botão de login */
+.btn {
+    background-color: #2B8B23; /* Verde que você mandou */
+    color: white;
+    padding: 14px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #246f1d;
+}
